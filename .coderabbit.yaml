@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: ko-KR
+tone_instructions: >-
+  한국어 해요체로 간결하게 리뷰해주세요.
+  문제의 발생 조건, 원인, 사용자 영향을 설명하고 가장 작은 수정안을 제안해주세요.
+
+reviews:
+  profile: chill
+  high_level_summary: true
+  high_level_summary_in_walkthrough: true
+  collapse_walkthrough: true
+  poem: true
+  suggested_labels: false
+  suggested_reviewers: false
+  auto_approvals:
+    enabled: false
+  auto_review:
+    enabled: true
+    auto_incremental_review: false
+    drafts: false
+    base_branches:
+      - "^develop$"
+  path_instructions:
+    - path: "**/*"
+      instructions: |
+        SCO-LOCK 프론트엔드는 React, TypeScript, Vite, React Router를 사용합니다.
+        변경으로 발생하는 버그, 기능 회귀, 데이터 오류, 보안 문제와
+        키보드 조작을 막는 접근성 문제를 우선 확인해주세요.
+        상태·이펙트·이벤트·라우팅 변경은 관련 호출부까지 확인하고,
+        API 연동 변경은 실제 응답 처리와 로딩·실패 시 화면 동작을 확인해주세요.
+        ESLint와 TypeScript 검사에서 이미 확인하는 지적은 생략해주세요.
+        취향에 따른 스타일 변경이나 PR 범위를 벗어나는 리팩토링은 자제해주세요.
+
+chat:
+  auto_reply: false
