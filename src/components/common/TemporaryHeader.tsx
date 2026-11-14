@@ -8,10 +8,7 @@ interface TemporaryHeaderProps {
 }
 
 const ACTION_CLASS_NAME =
-  "flex h-10 min-w-10 items-center justify-center rounded-sm border-0 bg-transparent px-2 " +
-  "enabled:cursor-pointer enabled:hover:bg-bg-interactive-transparent-hover " +
-  "enabled:active:bg-bg-interactive-transparent-pressed " +
-  "focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-fg-neutral-primary";
+  "flex h-10 min-w-10 items-center justify-center rounded-sm border-0 bg-transparent px-2 enabled:cursor-pointer enabled:hover:bg-bg-interactive-transparent-hover enabled:active:bg-bg-interactive-transparent-pressed focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-fg-neutral-primary";
 
 export default function TemporaryHeader({
   onProjectsClick,
