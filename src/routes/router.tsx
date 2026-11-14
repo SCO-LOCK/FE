@@ -9,10 +9,9 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: LandingPage },
       {
-        path: "design_system",
+        path: "common_components",
         lazy: async () => ({
-          Component: (await import("../pages/design-system/DesignSystem"))
-            .default,
+          Component: (await import("../pages/CommonComponentsPage")).default,
         }),
       },
 

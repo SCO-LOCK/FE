@@ -67,10 +67,7 @@ export default function InputArea({
 
   return (
     <div
-      className={
-        "flex h-27 w-full min-w-0 flex-col gap-(--gap-small) rounded-(--radius-small) bg-bg-interactive-weak px-(--padding-xlarge) pt-(--padding-xlarge) pb-(--padding-large) focus-within:bg-bg-interactive-weak-focused " +
-        className
-      }
+      className={`flex h-27 w-full min-w-0 flex-col gap-(--gap-small) rounded-(--radius-small) bg-bg-interactive-weak px-(--padding-xlarge) pt-(--padding-xlarge) pb-(--padding-large) focus-within:bg-bg-interactive-weak-focused ${className}`}
     >
       <textarea
         {...props}
