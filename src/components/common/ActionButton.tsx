@@ -5,7 +5,7 @@ interface ActionButtonProps extends ComponentPropsWithoutRef<'button'> {
   size?: 'medium' | 'large';
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
-  fullWidth?: boolean;
+  isfullWidth?: boolean;
 }
 
 const SIZE_STYLE = {
@@ -24,7 +24,7 @@ export default function ActionButton({
   size = 'medium',
   leftIcon,
   rightIcon,
-  fullWidth = false,
+  isFullWidth = false,
   type = 'button',
   className = '',
   children,
@@ -35,7 +35,7 @@ export default function ActionButton({
       type={type}
       className={`inline-flex items-center justify-center whitespace-nowrap rounded-[var(--radius-small)]
         transition-colors disabled:cursor-not-allowed disabled:opacity-40
-        ${SIZE_STYLE[size]} ${VARIANT_STYLE[variant]} ${fullWidth ? 'w-full' : ''} ${className}`}
+        ${SIZE_STYLE[size]} ${VARIANT_STYLE[variant]} ${isFullWidth ? 'w-full' : ''} ${className}`}
       {...rest}
     >
       {leftIcon && <span className="flex size-5 items-center justify-center">{leftIcon}</span>}
