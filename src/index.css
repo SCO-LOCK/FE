@@ -2,6 +2,7 @@
 @import "./styles/tokens/measurements.css";
 @import "./styles/tokens/colors.css";
 @import "./styles/tokens/appearance.css";
+@import "./styles/typography.css";
 
 :root {
   font-family: system-ui, sans-serif;
