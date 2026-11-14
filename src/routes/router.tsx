@@ -8,13 +8,6 @@ export const router = createBrowserRouter([
     Component: RootLayout,
     children: [
       { index: true, Component: LandingPage },
-      {
-        path: "common_components",
-        lazy: async () => ({
-          Component: (await import("../pages/CommonComponentsPage")).default,
-        }),
-      },
-
       { path: "*", Component: LandingPage },
     ],
   },
