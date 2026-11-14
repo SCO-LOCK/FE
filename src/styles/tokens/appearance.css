@@ -1,0 +1,78 @@
+/* Figma: Semantic:: Appearance. Tablet switches at the 768px frame width. */
+:root {
+  --layout-mode: mobile;
+  --gap-none: var(--measurement-0);
+  --gap-xsmall: var(--measurement-4);
+  --gap-small: var(--measurement-8);
+  --gap-medium: var(--measurement-12);
+  --gap-large: var(--measurement-16);
+  --gap-xlarge: var(--measurement-20);
+  --gap-2xlarge: var(--measurement-24);
+  --gap-3xlarge: var(--measurement-32);
+  --padding-none: var(--measurement-0);
+  --padding-xsmall: var(--measurement-4);
+  --padding-small: var(--measurement-8);
+  --padding-medium: var(--measurement-12);
+  --padding-large: var(--measurement-16);
+  --padding-xlarge: var(--measurement-20);
+  --padding-2xlarge: var(--measurement-24);
+  --padding-3xlarge: var(--measurement-32);
+  --radius-none: var(--measurement-0);
+  --radius-small: var(--measurement-4);
+  --radius-medium: var(--measurement-8);
+  --radius-large: var(--measurement-16);
+  --radius-full: var(--measurement-max);
+  --border-weight-default: 2px;
+  --border-weight-thin: 1.5px;
+  --grid-width: 390px;
+  --grid-columns: 3;
+  --grid-margin: 16px;
+  --grid-gutter: 8px;
+  --typography-letter-spacing-default: -0.1px;
+  --typography-font-weight-medium: 500;
+  --typography-font-weight-semibold: 600;
+  --typography-font-size-xsmall: var(--measurement-10);
+  --typography-font-size-small: var(--measurement-12);
+  --typography-font-size-medium: var(--measurement-14);
+  --typography-font-size-large: var(--measurement-16);
+  --typography-font-size-xlarge: var(--measurement-16);
+  --typography-font-size-2xlarge: var(--measurement-18);
+  --typography-font-size-3xlarge: var(--measurement-24);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --layout-mode: tablet;
+    --grid-width: 780px;
+    --grid-columns: 6;
+    --grid-margin: 32px;
+    --grid-gutter: 16px;
+    --typography-font-size-xsmall: var(--measurement-12);
+    --typography-font-size-small: var(--measurement-14);
+    --typography-font-size-medium: var(--measurement-16);
+    --typography-font-size-large: var(--measurement-18);
+    --typography-font-size-xlarge: var(--measurement-20);
+    --typography-font-size-2xlarge: var(--measurement-24);
+    --typography-font-size-3xlarge: var(--measurement-36);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --layout-mode: desktop compact;
+    --grid-width: 1024px;
+    --grid-columns: 12;
+    --grid-margin: 48px;
+    --grid-gutter: 20px;
+    --typography-font-size-3xlarge: var(--measurement-40);
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --layout-mode: desktop;
+    --grid-width: 1440px;
+    --grid-margin: 96px;
+    --grid-gutter: 24px;
+  }
+}
