@@ -1,7 +1,7 @@
 ---
 name: docs
 about: 문서 작성·수정
-title: ''
+title: 'docs: '
 labels: docs
 assignees: ''
 
