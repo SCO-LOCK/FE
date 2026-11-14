@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import noticeBadge from '../../assets/icons/notice-badge.svg';   // (!) 그림
+import NoticeBadge from '../../assets/icons/notice-badge.svg?react';
 
 interface ReportCardProps extends ComponentPropsWithoutRef<'section'> {
   title: string;     
@@ -15,7 +15,7 @@ export default function ReportCard({ title, footer, children, className = '', ..
 
         <div className="flex items-center gap-[var(--gap-small)]">
           <span className="flex size-7 shrink-0 items-center justify-center">
-            <img src={noticeBadge} alt="" className="size-[22px]" />
+            <NoticeBadge aria-hidden="true" width={22} height={22} viewBox="1 1 22 22" />
           </span>
           <h3 className="flex-1 type-heading-tertiary text-fg-neutral-primary">{title}</h3>
         </div>
