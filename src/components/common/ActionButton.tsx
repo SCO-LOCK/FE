@@ -5,7 +5,7 @@ interface ActionButtonProps extends ComponentPropsWithoutRef<'button'> {
   size?: 'medium' | 'large';
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
-  isfullWidth?: boolean;
+  isFullWidth?: boolean;
 }
 
 const SIZE_STYLE = {
