@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from 'react';
 import FailBadge from '../../assets/icons/fail-badge.svg?react';
-import CloseIcon from '../../assets/icons/x-icon-inverse.svg?react';
+import CloseIcon from '../../assets/icons/x-icon.svg?react';
 import IconTextButton from './IconTextButton';
 
 interface SnackbarProps extends ComponentPropsWithoutRef<'div'> {
@@ -44,7 +44,7 @@ export default function Snackbar({
         <div className="flex h-6 items-center">
           <IconTextButton
             size="large"
-            icon={<CloseIcon aria-hidden="true" />}
+            icon={<CloseIcon aria-hidden="true" className="text-fg-neutral-inverse" />}
             aria-label="닫기"
             onClick={onClose}
           />

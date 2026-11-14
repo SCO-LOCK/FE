@@ -34,7 +34,7 @@ export default function TemporaryHeader({
           onClick={onProjectsClick}
           disabled={!onProjectsClick}
         >
-          <MyProjectsIcon aria-hidden="true" />
+          <MyProjectsIcon aria-hidden="true" className="text-(--palette-static-black)" />
           <span className="whitespace-nowrap max-[390px]:sr-only">
             내 프로젝트
           </span>

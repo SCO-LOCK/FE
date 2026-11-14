@@ -1,4 +1,4 @@
-import NoticeIcon from "../../assets/icons/notice-icon.svg?react";
+import { NoticeIcon } from "../../assets/icons/StatusIcon";
 
 interface ErrorMessageProps {
   message: string;
