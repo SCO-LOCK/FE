@@ -19,7 +19,6 @@ export default function Snackbar({
 }: SnackbarProps) {
   return (
     <div
-      role="alert"
       className={`flex w-full max-w-[448px] items-center gap-[var(--gap-small)]
         rounded-[var(--radius-small)] bg-bg-neutral-inverse
         py-[var(--padding-large)] px-[var(--padding-xlarge)] ${className}`}
@@ -31,7 +30,7 @@ export default function Snackbar({
         </span>
       </span>
 
-      <p className="flex-1 type-body-medium text-fg-neutral-inverse">{message}</p>
+      <p role="alert" className="flex-1 type-body-medium text-fg-neutral-inverse">{message}</p>
 
       {onRetry && (
         <div className="flex h-6 items-center">

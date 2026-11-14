@@ -26,7 +26,7 @@ export default function Stepper({
           key={label}
           step={index + 1}
           label={label}
-          selected={index + 1 === currentStep}
+          isSelected={index + 1 === currentStep}
           className={isVertical ? 'w-full' : ''}
         />
       ))}
