@@ -19,6 +19,11 @@ const VARIANT_STYLE = {
   neutralInverse: 'bg-bg-interactive-inverse text-fg-neutral-inverse active:bg-bg-interactive-inverse-pressed',
 };
 
+const ICON_SIZE = {
+  medium: 'size-5',
+  large: 'size-6',
+};
+
 export default function ActionButton({
   variant = 'neutral',
   size = 'medium',
@@ -38,9 +43,9 @@ export default function ActionButton({
         ${SIZE_STYLE[size]} ${VARIANT_STYLE[variant]} ${isFullWidth ? 'w-full' : ''} ${className}`}
       {...rest}
     >
-      {leftIcon && <span className="flex size-5 items-center justify-center">{leftIcon}</span>}
+      {leftIcon && <span className={`flex items-center justify-center ${ICON_SIZE[size]}`}>{leftIcon}</span>}
       {children}
-      {rightIcon && <span className="flex size-5 items-center justify-center">{rightIcon}</span>}
+      {rightIcon && <span className={`flex items-center justify-center ${ICON_SIZE[size]}`}>{rightIcon}</span>}
     </button>
   );
 }
