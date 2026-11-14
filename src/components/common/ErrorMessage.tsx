@@ -1,4 +1,4 @@
-import noticeIcon from "../../assets/icons/notice.svg";
+import NoticeIcon from "../../assets/icons/notice-icon.svg?react";
 
 interface ErrorMessageProps {
   message: string;
@@ -16,9 +16,7 @@ export default function ErrorMessage({
       id={id}
       className={`type-body-small flex min-w-0 items-center text-fg-accent-negative ${className}`}
     >
-      <span className="grid size-(--measurement-24) shrink-0 place-items-center">
-        <img src={noticeIcon} alt="" className="rotate-180" />
-      </span>
+      <NoticeIcon aria-hidden="true" className="shrink-0" />
       <span className="wrap-anywhere">{message}</span>
     </p>
   );

@@ -1,5 +1,6 @@
 import type { ComponentPropsWithoutRef } from 'react';
-import xIcon from '../../assets/icons/x-icon.svg';
+import FailBadge from '../../assets/icons/fail-badge.svg?react';
+import CloseIcon from '../../assets/icons/x-icon-inverse.svg?react';
 import IconTextButton from './IconTextButton';
 
 interface SnackbarProps extends ComponentPropsWithoutRef<'div'> {
@@ -24,11 +25,7 @@ export default function Snackbar({
         py-[var(--padding-large)] px-[var(--padding-xlarge)] ${className}`}
       {...rest}
     >
-      <span className="flex size-6 shrink-0 items-center justify-center">
-        <span className="flex size-[22px] items-center justify-center rounded-[var(--radius-full)] bg-[var(--palette-red-400)] p-1">
-          <img src={xIcon} alt="" className="size-full" />
-        </span>
-      </span>
+      <FailBadge aria-hidden="true" className="shrink-0" />
 
       <p role="alert" className="flex-1 type-body-medium text-fg-neutral-inverse">{message}</p>
 
@@ -47,7 +44,7 @@ export default function Snackbar({
         <div className="flex h-6 items-center">
           <IconTextButton
             size="large"
-            icon={<img src={xIcon} alt="" className="size-full" />}
+            icon={<CloseIcon aria-hidden="true" />}
             aria-label="닫기"
             onClick={onClose}
           />
