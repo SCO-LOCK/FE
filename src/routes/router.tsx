@@ -8,14 +8,6 @@ export const router = createBrowserRouter([
     Component: RootLayout,
     children: [
       { index: true, Component: LandingPage },
-      {
-        path: "design_system",
-        lazy: async () => ({
-          Component: (await import("../pages/design-system/DesignSystem"))
-            .default,
-        }),
-      },
-
       { path: "*", Component: LandingPage },
     ],
   },
