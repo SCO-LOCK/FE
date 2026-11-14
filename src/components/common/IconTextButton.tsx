@@ -7,30 +7,31 @@ interface IconTextButtonProps extends ComponentPropsWithoutRef<'button'> {
 }
 
 const SIZE_STYLE = {
-  medium: 'h-10 min-w-10 px-[var(--padding-small)]',
-  large: 'h-11 min-w-11 px-[var(--padding-small)]',
+  medium: 'h-10 min-w-10 px-[var(--padding-small)] type-action-medium-strong',
+  large: 'h-11 min-w-11 px-[var(--padding-small)] type-action-xlarge-strong',
 };
 
 export default function IconTextButton({
-  size = 'medium',
+  size = 'large',
   icon,
   label,
   type = 'button',
   className = '',
+  children,
   ...rest
 }: IconTextButtonProps) {
   return (
     <button
       type={type}
       className={`inline-flex items-center justify-center gap-[var(--gap-xsmall)] whitespace-nowrap
-        rounded-[var(--radius-small)] transition type-action-xlarge-strong text-fg-neutral-primary
+        rounded-[var(--radius-small)] transition text-fg-neutral-primary
         bg-bg-interactive-transparent hover:bg-bg-interactive-transparent-hover
         active:scale-95 active:bg-bg-interactive-transparent-pressed
         ${SIZE_STYLE[size]} ${className}`}
       {...rest}
     >
       {icon && <span className="flex size-6 items-center justify-center">{icon}</span>}
-      {label}
+      {label ?? children}
     </button>
   );
 }
