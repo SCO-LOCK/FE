@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
-import { Link } from "react-router";
 import TextStylePreview from "./TextStylePreview";
 import {
   appearanceGroups,

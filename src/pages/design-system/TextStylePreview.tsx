@@ -4,6 +4,7 @@ import './text-style-preview.css'
 
 const families = ['heading', 'input', 'body', 'action']
 const styles = Object.entries(textStyles)
+const SAMPLE_TEXT = 'SCO/LOCK 123 · 디자인 시스템'
 
 function TextStylePreview() {
   const preview = useRef<HTMLDivElement>(null)
@@ -38,10 +39,10 @@ function TextStylePreview() {
             const [size, lineHeight, tracking, weight] = values[name] ?? []
 
             return (
-              <li className={'text-style-preview__row ' + style.utility} data-text-style={name} key={name}>
+              <li className={'text-style-preview__row ' + style.utility} key={name}>
                 <div className="text-style-preview__name">
-                  <p>{name}</p>
-                  <code>{style.utility}</code>
+                  <p data-text-style={name}>{SAMPLE_TEXT}</p>
+                  <code>{name} · {style.utility}</code>
                 </div>
                 <dl className="text-style-preview__metrics">
                   <div>
