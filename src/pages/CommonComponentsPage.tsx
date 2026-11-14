@@ -2,9 +2,7 @@ import { useState } from "react";
 import Divider from "../components/common/Divider";
 import ErrorMessage from "../components/common/ErrorMessage";
 import TemporaryHeader from "../components/common/TemporaryHeader";
-import Field from "../components/common/input/Field";
-import Input from "../components/common/input/Input";
-import InputArea from "../components/common/input/InputArea";
+import { InputField } from "../components/common/input";
 
 const CARD_CLASS_NAME =
   "flex min-w-0 flex-col gap-(--gap-medium) rounded-(--radius-medium) bg-bg-neutral-default p-(--padding-large)";
@@ -55,37 +53,42 @@ export default function CommonComponentsPage() {
 
       <section aria-labelledby="preview-input" className={HALF_CARD_CLASS_NAME}>
         <h2 id="preview-input" className="type-heading-tertiary">
-          Input
+          InputField · 한 줄 입력
         </h2>
-        <Input
-          aria-labelledby="preview-input"
-          placeholder="한 줄을 입력하세요"
+        <InputField
           hasError={hasError}
+          inputProps={{ placeholder: "한 줄을 입력하세요" }}
         />
       </section>
 
-      <section aria-labelledby="preview-input-area" className={HALF_CARD_CLASS_NAME}>
+      <section
+        aria-labelledby="preview-input-area"
+        className={HALF_CARD_CLASS_NAME}
+      >
         <h2 id="preview-input-area" className="type-heading-tertiary">
-          InputArea
+          InputField · 여러 줄 입력
         </h2>
-        <InputArea
-          aria-labelledby="preview-input-area"
-          placeholder="여러 줄을 입력하세요"
+        <InputField
+          variant="textarea"
           hasError={hasError}
+          inputProps={{ placeholder: "여러 줄을 입력하세요" }}
         />
       </section>
 
-      <section aria-labelledby="preview-field" className={HALF_CARD_CLASS_NAME}>
-        <h2 id="preview-field" className="type-heading-tertiary">
-          Field
+      <section
+        aria-labelledby="preview-input-field"
+        className={HALF_CARD_CLASS_NAME}
+      >
+        <h2 id="preview-input-field" className="type-heading-tertiary">
+          InputField · 라벨과 오류 메시지
         </h2>
-        <Field
+        <InputField
           label="프로젝트 이름"
           required
           errorMessage={hasError ? "프로젝트 이름을 확인해 주세요." : undefined}
           inputProps={{ placeholder: "프로젝트 이름을 입력하세요" }}
         />
-        <Field
+        <InputField
           variant="textarea"
           label="프로젝트 설명"
           errorMessage={hasError ? "프로젝트 설명을 확인해 주세요." : undefined}
@@ -93,14 +96,20 @@ export default function CommonComponentsPage() {
         />
       </section>
 
-      <section aria-labelledby="preview-error-message" className={HALF_CARD_CLASS_NAME}>
+      <section
+        aria-labelledby="preview-error-message"
+        className={HALF_CARD_CLASS_NAME}
+      >
         <h2 id="preview-error-message" className="type-heading-tertiary">
           ErrorMessage
         </h2>
         <ErrorMessage message="프로젝트 이름을 입력해 주세요." />
       </section>
 
-      <section aria-labelledby="preview-divider" className={`${CARD_CLASS_NAME} col-span-full`}>
+      <section
+        aria-labelledby="preview-divider"
+        className={`${CARD_CLASS_NAME} col-span-full`}
+      >
         <h2 id="preview-divider" className="type-heading-tertiary">
           Divider
         </h2>
