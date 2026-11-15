@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { InputField } from '../components/common/input';
 import { useNavigate } from 'react-router';
 import arrowLeftIcon from '../assets/icons/arrow-line-left-icon.svg';
 import arrowRightIcon from '../assets/icons/arrow-line-right-icon.svg';
@@ -6,10 +8,12 @@ import IconTextButton from '../components/common/IconTextButton';
 import Stepper from '../components/common/Stepper/Stepper';
 import { PATHS } from '../routes/paths';
 
+
 const STEPS = ['프로젝트 정보 입력', '요청 사항 입력', 'AI 분석 결과'];
 
 export default function RequestPage() {
   const navigate = useNavigate();
+    const [requestText, setRequestText] = useState('');
 
   return (
     <main className="page-grid mt-10 flex-1 pb-24">
@@ -33,8 +37,27 @@ export default function RequestPage() {
               클라이언트의 요청 사항을 입력하면 제작 전에 다시 확인해야 할 내용을 찾아줘요.
             </p>
           </div>
+          <section className="flex flex-col gap-[var(--gap-large)]">
+            <h2
+              id="request-title"
+              className="flex gap-[var(--gap-small)] type-heading-secondary text-fg-neutral-primary"
+            >
+              클라이언트 요청 사항
+              <span aria-hidden="true" className="text-fg-accent-notice">*</span>
+            </h2>
 
-          {/* TODO: 2단계 입력창 */}
+            <InputField
+              variant="textarea"
+              required
+              inputProps={{
+                'aria-labelledby': 'request-title',
+                placeholder: '클라이언트에게 받은 요청을 그대로 입력해주세요.',
+                value: requestText,
+                onChange: (event) => setRequestText(event.target.value),
+                className: 'h-80',
+              }}
+            />
+          </section>
         </div>
 
         <div className="mt-auto flex justify-between">
