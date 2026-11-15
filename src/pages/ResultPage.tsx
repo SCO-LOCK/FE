@@ -5,13 +5,16 @@ import Stepper from '../components/common/Stepper/Stepper';
 import ReportCard from '../components/report/ReportCard';                    
 import ReportCardInteractive from '../components/report/ReportCardInteractive'; 
 import { MOCK_FINDINGS } from '../mocks/findings';  
-import ReportCardItem from '../components/report/ReportCardItem';                        
+import ReportCardItem from '../components/report/ReportCardItem'; 
+import arrowRightIcon from '../assets/icons/arrow-line-right-icon.svg';   
+import ActionButton from '../components/common/ActionButton';            
+import { PATHS } from '../routes/paths';                                                    
 
 const STEPS = ['프로젝트 정보 입력', '요청 사항 입력', 'AI 분석 결과'];
 
 export default function ResultPage() {
   const navigate = useNavigate();
-  const findings = MOCK_FINDINGS; // ★ TODO: 요청 페이지에서 넘겨받은 결과로 교체
+  const findings = MOCK_FINDINGS; 
 
   return (
     <main className="page-grid mt-10 flex-1 pb-24">
@@ -69,6 +72,23 @@ export default function ResultPage() {
               </div>
             )}
           </section>
+        </div>
+        <div className="mt-auto flex justify-between">
+          <ActionButton
+            size="large"
+            leftIcon={<img src={arrowLeftIcon} alt="" className="size-full" />}
+            onClick={() => navigate(PATHS.request)}
+          >
+            요청 사항 입력
+          </ActionButton>
+          <ActionButton
+            size="large"
+            variant="brandInverse"
+            rightIcon={<img src={arrowRightIcon} alt="" className="size-full" />}
+            onClick={() => navigate(PATHS.home)}
+          >
+            홈
+          </ActionButton>
         </div>
       </div>
     </main>
