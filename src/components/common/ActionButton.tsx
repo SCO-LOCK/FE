@@ -38,7 +38,7 @@ export default function ActionButton({
   return (
     <button
       type={type}
-      className={`inline-flex items-center justify-center whitespace-nowrap rounded-[var(--radius-small)]
+      className={`cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-[var(--radius-small)]
         transition-colors disabled:cursor-not-allowed disabled:opacity-40
         ${SIZE_STYLE[size]} ${VARIANT_STYLE[variant]} ${isFullWidth ? 'w-full' : ''} ${className}`}
       {...rest}
