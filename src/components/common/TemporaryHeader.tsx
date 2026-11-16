@@ -1,5 +1,5 @@
-import logoutIcon from "../../assets/icons/exit.svg";
-import myProjectsIcon from "../../assets/icons/my-projects.svg";
+import LogoutIcon from "../../assets/icons/exit.svg?react";
+import MyProjectsIcon from "../../assets/icons/my-projects.svg?react";
 import scolockLogo from "../../assets/scolock-logo.svg";
 
 interface TemporaryHeaderProps {
@@ -34,7 +34,7 @@ export default function TemporaryHeader({
           onClick={onProjectsClick}
           disabled={!onProjectsClick}
         >
-          <img src={myProjectsIcon} alt="" width={24} height={24} />
+          <MyProjectsIcon aria-hidden="true" className="text-(--palette-static-black)" />
           <span className="whitespace-nowrap max-[390px]:sr-only">
             내 프로젝트
           </span>
@@ -46,7 +46,7 @@ export default function TemporaryHeader({
           onClick={onLogout}
           disabled={!onLogout}
         >
-          <img src={logoutIcon} alt="" width={24} height={24} />
+          <LogoutIcon aria-hidden="true" />
         </button>
       </div>
     </header>

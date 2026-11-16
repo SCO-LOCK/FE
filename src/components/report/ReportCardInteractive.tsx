@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, MouseEvent } from 'react';
-import copyIcon from '../../assets/icons/copy-icon.svg'; 
+import CopyIcon from '../../assets/icons/copy-icon.svg?react';
 import ReportCardItem from './ReportCardItem';         
 
 interface ReportCardInteractiveProps extends ComponentPropsWithoutRef<'button'> {
@@ -29,7 +29,7 @@ export default function ReportCardInteractive({ title, content, type = 'button',
         group-active:bg-bg-interactive-weak-pressed">
 
         <ReportCardItem title={title} content={content} />
-        <img src={copyIcon} alt="" className="size-6 shrink-0" />  
+        <CopyIcon aria-hidden="true" className="size-6 shrink-0 text-fg-neutral-secondary" />
         <span className="sr-only">복사하기</span>  
       </span>  
     </button>

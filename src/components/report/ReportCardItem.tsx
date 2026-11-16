@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef } from 'react';
-import scoBadge from '../../assets/icons/sco-badge.svg';
+import ScoBadge from '../../assets/icons/sco-badge.svg?react';
 
 interface ReportCardItemProps extends ComponentPropsWithoutRef<'span'> {
   title: string;
@@ -21,7 +21,7 @@ export default function ReportCardItem({
         <span className="type-body-medium text-fg-neutral-primary">{content}</span>
         {message && (
           <span className="flex items-start gap-[var(--gap-xsmall)]">
-            <img src={scoBadge} alt="" className="size-6 shrink-0" />
+            <ScoBadge aria-hidden="true" className="size-6 shrink-0" />
             <span className="type-body-medium text-fg-accent-positive">{message}</span>
           </span>
         )}
