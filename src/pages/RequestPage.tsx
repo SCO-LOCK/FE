@@ -1,8 +1,7 @@
+import { analyzeRequest } from '../apis/analysis';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import { analyzeRequest } from '../apis/analysis';
-import arrowLeftIcon from '../assets/icons/arrow-line-left-icon.svg';
-import arrowRightIcon from '../assets/icons/arrow-line-right-icon.svg';
+import ArrowLineIcon from '../assets/icons/ArrowLineIcon';
 import ActionButton from '../components/common/ActionButton';
 import IconTextButton from '../components/common/IconTextButton';
 import { InputField } from '../components/common/input';
@@ -54,7 +53,7 @@ export default function RequestPage() {
       <div className="col-span-full flex flex-col gap-11 min-[1024px]:col-span-9">
         <IconTextButton
           size="large"
-          icon={<img src={arrowLeftIcon} alt="" className="size-full" />}
+          icon={<ArrowLineIcon direction="left" />}
           label="프로젝트명"
           onClick={() => navigate(-1)}
           className="self-start"
@@ -98,7 +97,7 @@ export default function RequestPage() {
         <div className="mt-auto flex justify-between">
           <ActionButton
             size="large"
-            leftIcon={<img src={arrowLeftIcon} alt="" className="size-full" />}
+            leftIcon={<ArrowLineIcon direction="left" />}
             onClick={() => navigate(PATHS.projectInfo)}
           >
             프로젝트 정보 입력
@@ -106,7 +105,7 @@ export default function RequestPage() {
           <ActionButton
             size="large"
             variant="brandInverse"
-            rightIcon={<img src={arrowRightIcon} alt="" className="size-full" />}
+            rightIcon={<ArrowLineIcon />}
             onClick={handleAnalyzeClick}
             disabled={isAnalyzing}
           >
