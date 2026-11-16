@@ -6,11 +6,13 @@ import arrowRightIcon from '../assets/icons/arrow-line-right-icon.svg';
 import ActionButton from '../components/common/ActionButton';
 import IconTextButton from '../components/common/IconTextButton';
 import { InputField } from '../components/common/input';
+import Snackbar from '../components/common/Snackbar';
 import Stepper from '../components/common/Stepper/Stepper';
 import { PATHS } from '../routes/paths';
 
 const STEPS = ['프로젝트 정보 입력', '요청 사항 입력', 'AI 분석 결과'];
 const EMPTY_REQUEST_MESSAGE = '클라이언트 요청사항을 입력해주세요.';
+const ANALYSIS_ERROR_MESSAGE = '요청을 분석하지 못했어요.';
 
 export default function RequestPage() {
   const navigate = useNavigate();
@@ -18,6 +20,7 @@ export default function RequestPage() {
   const [requestText, setRequestText] = useState<string>(location.state?.requestText ?? '');
   const [errorMessage, setErrorMessage] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [hasAnalysisError, setHasAnalysisError] = useState(false);
 
   const handleAnalyzeClick = async () => {
     if (requestText.trim() === '') {
@@ -25,12 +28,13 @@ export default function RequestPage() {
       return;
     }
 
+    setHasAnalysisError(false);
     setIsAnalyzing(true);
     try {
       const findings = await analyzeRequest(requestText);
       navigate(PATHS.result, { state: { findings, requestText } });
     } catch {
-      // TODO: 6단계 - 실패 Snackbar
+      setHasAnalysisError(true);
     } finally {
       setIsAnalyzing(false);
     }
@@ -105,6 +109,15 @@ export default function RequestPage() {
           </ActionButton>
         </div>
       </div>
+
+      {hasAnalysisError && (
+        <Snackbar
+          message={ANALYSIS_ERROR_MESSAGE}
+          onRetry={handleAnalyzeClick}
+          onClose={() => setHasAnalysisError(false)}
+          className="fixed top-[92px] right-10 z-10"
+        />
+      )}
     </main>
   );
 }
