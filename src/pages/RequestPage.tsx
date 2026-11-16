@@ -14,10 +14,15 @@ const STEPS = ['프로젝트 정보 입력', '요청 사항 입력', 'AI 분석 
 const EMPTY_REQUEST_MESSAGE = '클라이언트 요청사항을 입력해주세요.';
 const ANALYSIS_ERROR_MESSAGE = '요청을 분석하지 못했어요.';
 
+interface RequestLocationState {
+  requestText?: string;
+}
+
 export default function RequestPage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [requestText, setRequestText] = useState<string>(location.state?.requestText ?? '');
+  const state = location.state as RequestLocationState | null;
+  const [requestText, setRequestText] = useState(state?.requestText ?? '');
   const [errorMessage, setErrorMessage] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [hasAnalysisError, setHasAnalysisError] = useState(false);
