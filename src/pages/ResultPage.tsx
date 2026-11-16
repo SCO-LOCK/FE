@@ -89,7 +89,7 @@ export default function ResultPage() {
           <ActionButton
             size="large"
             leftIcon={<img src={arrowLeftIcon} alt="" className="size-full" />}
-            onClick={() => navigate(PATHS.request)}
+            onClick={() => navigate(PATHS.request, { state: { requestText } })}
           >
             요청 사항 입력
           </ActionButton>
@@ -97,7 +97,7 @@ export default function ResultPage() {
             size="large"
             variant="brandInverse"
             rightIcon={<img src={arrowRightIcon} alt="" className="size-full" />}
-            onClick={() => navigate(PATHS.request, { state: { requestText } })}
+            onClick={() => navigate(PATHS.home)}
           >
             홈
           </ActionButton>
