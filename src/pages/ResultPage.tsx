@@ -1,20 +1,32 @@
-import { useNavigate } from 'react-router';
 import arrowLeftIcon from '../assets/icons/arrow-line-left-icon.svg';
 import IconTextButton from '../components/common/IconTextButton';
 import Stepper from '../components/common/Stepper/Stepper';
 import ReportCard from '../components/report/ReportCard';                    
 import ReportCardInteractive from '../components/report/ReportCardInteractive'; 
-import { MOCK_FINDINGS } from '../mocks/findings';  
 import ReportCardItem from '../components/report/ReportCardItem'; 
 import arrowRightIcon from '../assets/icons/arrow-line-right-icon.svg';   
 import ActionButton from '../components/common/ActionButton';            
-import { PATHS } from '../routes/paths';                                                    
+import { PATHS } from '../routes/paths';        
+import { Navigate, useLocation, useNavigate } from 'react-router';
+import type { Finding } from '../types/analysis';                                                               
 
 const STEPS = ['프로젝트 정보 입력', '요청 사항 입력', 'AI 분석 결과'];
 
+interface ResultLocationState {
+  findings: Finding[];
+  requestText: string;
+}
+
 export default function ResultPage() {
   const navigate = useNavigate();
-  const findings = MOCK_FINDINGS; 
+    const location = useLocation();
+  const state = location.state as ResultLocationState | null;
+
+  if (!state) {
+    return <Navigate to={PATHS.request} replace />;
+  }
+
+  const { findings, requestText } = state;
 
   return (
     <main className="page-grid mt-10 flex-1 pb-24">
@@ -85,7 +97,7 @@ export default function ResultPage() {
             size="large"
             variant="brandInverse"
             rightIcon={<img src={arrowRightIcon} alt="" className="size-full" />}
-            onClick={() => navigate(PATHS.home)}
+            onClick={() => navigate(PATHS.request, { state: { requestText } })}
           >
             홈
           </ActionButton>
