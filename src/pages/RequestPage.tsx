@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
+import { analyzeRequest } from '../apis/analysis';
 import arrowLeftIcon from '../assets/icons/arrow-line-left-icon.svg';
 import arrowRightIcon from '../assets/icons/arrow-line-right-icon.svg';
 import ActionButton from '../components/common/ActionButton';
@@ -13,15 +14,26 @@ const EMPTY_REQUEST_MESSAGE = '클라이언트 요청사항을 입력해주세�
 
 export default function RequestPage() {
   const navigate = useNavigate();
-  const [requestText, setRequestText] = useState('');
+  const location = useLocation();
+  const [requestText, setRequestText] = useState<string>(location.state?.requestText ?? '');
   const [errorMessage, setErrorMessage] = useState('');
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
-  const handleAnalyzeClick = () => {
+  const handleAnalyzeClick = async () => {
     if (requestText.trim() === '') {
       setErrorMessage(EMPTY_REQUEST_MESSAGE);
       return;
     }
-    // TODO: 4단계 - 분석 시작
+
+    setIsAnalyzing(true);
+    try {
+      const findings = await analyzeRequest(requestText);
+      navigate(PATHS.result, { state: { findings, requestText } });
+    } catch {
+      // TODO: 6단계 - 실패 Snackbar
+    } finally {
+      setIsAnalyzing(false);
+    }
   };
 
   return (
@@ -87,6 +99,7 @@ export default function RequestPage() {
             variant="brandInverse"
             rightIcon={<img src={arrowRightIcon} alt="" className="size-full" />}
             onClick={handleAnalyzeClick}
+            disabled={isAnalyzing}
           >
             AI 분석 결과
           </ActionButton>
