@@ -1,19 +1,28 @@
 import { useState } from 'react';
-import { InputField } from '../components/common/input';
 import { useNavigate } from 'react-router';
 import arrowLeftIcon from '../assets/icons/arrow-line-left-icon.svg';
 import arrowRightIcon from '../assets/icons/arrow-line-right-icon.svg';
 import ActionButton from '../components/common/ActionButton';
 import IconTextButton from '../components/common/IconTextButton';
+import { InputField } from '../components/common/input';
 import Stepper from '../components/common/Stepper/Stepper';
 import { PATHS } from '../routes/paths';
 
-
 const STEPS = ['프로젝트 정보 입력', '요청 사항 입력', 'AI 분석 결과'];
+const EMPTY_REQUEST_MESSAGE = '클라이언트 요청사항을 입력해주세요.';
 
 export default function RequestPage() {
   const navigate = useNavigate();
-    const [requestText, setRequestText] = useState('');
+  const [requestText, setRequestText] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleAnalyzeClick = () => {
+    if (requestText.trim() === '') {
+      setErrorMessage(EMPTY_REQUEST_MESSAGE);
+      return;
+    }
+    // TODO: 4단계 - 분석 시작
+  };
 
   return (
     <main className="page-grid mt-10 flex-1 pb-24">
@@ -37,6 +46,7 @@ export default function RequestPage() {
               클라이언트의 요청 사항을 입력하면 제작 전에 다시 확인해야 할 내용을 찾아줘요.
             </p>
           </div>
+
           <section className="flex flex-col gap-[var(--gap-large)]">
             <h2
               id="request-title"
@@ -49,11 +59,15 @@ export default function RequestPage() {
             <InputField
               variant="textarea"
               required
+              errorMessage={errorMessage}
               inputProps={{
                 'aria-labelledby': 'request-title',
                 placeholder: '클라이언트에게 받은 요청을 그대로 입력해주세요.',
                 value: requestText,
-                onChange: (event) => setRequestText(event.target.value),
+                onChange: (event) => {
+                  setRequestText(event.target.value);
+                  setErrorMessage('');
+                },
                 className: 'h-80',
               }}
             />
@@ -72,6 +86,7 @@ export default function RequestPage() {
             size="large"
             variant="brandInverse"
             rightIcon={<img src={arrowRightIcon} alt="" className="size-full" />}
+            onClick={handleAnalyzeClick}
           >
             AI 분석 결과
           </ActionButton>
