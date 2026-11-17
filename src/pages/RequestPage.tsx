@@ -98,8 +98,9 @@ export default function RequestPage() {
           <ActionButton
             size="large"
             leftIcon={<ArrowLineIcon direction="left" />}
-            onClick={() => navigate(PATHS.projectInfo)}
-          >
+            onClick={() => {
+              // TODO: 프로젝트 정보 입력 페이지 연결
+            }}>
             프로젝트 정보 입력
           </ActionButton>
           <ActionButton
