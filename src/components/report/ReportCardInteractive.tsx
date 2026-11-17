@@ -18,7 +18,7 @@ export default function ReportCardInteractive({ title, content, type = 'button',
         }
     };
   return (
-    <button type={type} onClick={handleClick} className={`group w-full transition-all duration-100
+    <button type={type} onClick={handleClick} className={`cursor-pointer group w-full transition-all duration-100
       hover:p-[var(--padding-xsmall)] active:p-[var(--padding-xsmall)] ${className}`} {...rest}>
 
       <span className="flex items-center gap-[var(--gap-small)] rounded-[var(--radius-small)]
