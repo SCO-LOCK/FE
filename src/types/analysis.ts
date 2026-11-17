@@ -1,8 +1,37 @@
-export interface Finding {
-  type: 'missing_info' | 'ambiguous' | 'baseline_change' | 'technical_check';
-  title: string;
-  existing_baseline: string | null;
-  request_excerpt: string;
-  reason: string;
-  suggested_question: string;
+export interface StartAnalysisData {
+  analysisId: number;
 }
+
+export interface AnalysisItem {
+  id: number;
+  itemOrder: number;
+  title?: string | null;
+  classification: string;
+  criteriaEvidence: string | null;
+  requestExcerpt: string;
+  reason: string;
+  suggestedQuestion: string | null;
+}
+
+interface AnalysisProgress {
+  id: number;
+  currentStep?: string | null;
+}
+
+interface PendingAnalysis extends AnalysisProgress {
+  status: 'PENDING' | 'RUNNING' | 'PROCESSING';
+}
+
+interface CompletedAnalysis extends AnalysisProgress {
+  status: 'COMPLETED';
+  reviewCount: number;
+  items: AnalysisItem[];
+}
+
+interface FailedAnalysis extends AnalysisProgress {
+  status: 'FAILED';
+  errorCode?: string | null;
+  message?: string | null;
+}
+
+export type Analysis = PendingAnalysis | CompletedAnalysis | FailedAnalysis;
