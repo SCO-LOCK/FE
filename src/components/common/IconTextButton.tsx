@@ -23,7 +23,7 @@ export default function IconTextButton({
   return (
     <button
       type={type}
-      className={`inline-flex items-center justify-center gap-[var(--gap-xsmall)] whitespace-nowrap
+      className={`cursor-pointer inline-flex items-center justify-center gap-[var(--gap-xsmall)] whitespace-nowrap
         rounded-[var(--radius-small)] transition text-fg-neutral-primary
         bg-bg-interactive-transparent hover:bg-bg-interactive-transparent-hover
         active:scale-95 active:bg-bg-interactive-transparent-pressed
