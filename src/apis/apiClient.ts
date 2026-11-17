@@ -16,9 +16,6 @@ interface ApiResponse<T> extends ApiErrorBody {
   data: T | null;
 }
 
-const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, '');
-const API_BASE_URL = import.meta.env.DEV && apiBaseUrl ? '/api' : apiBaseUrl;
-
 export class ApiError extends Error {
   readonly status: number;
   readonly code: string | undefined;
@@ -36,7 +33,7 @@ export class ApiError extends Error {
 }
 
 export async function fetchData<T>(path: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(`${API_BASE_URL}${path}`, options);
+  const response = await fetch(`/api${path}`, options);
   const body: ApiResponse<T> | null = await response.json().catch(() => null);
   options?.signal?.throwIfAborted();
 
