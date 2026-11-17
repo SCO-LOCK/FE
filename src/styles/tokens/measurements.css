@@ -1,0 +1,28 @@
+/* Figma: Primitive:: Measurements */
+:root {
+  --measurement-0: 0px;
+  --measurement-2: 2px;
+  --measurement-4: 4px;
+  --measurement-6: 6px;
+  --measurement-8: 8px;
+  --measurement-10: 10px;
+  --measurement-12: 12px;
+  --measurement-14: 14px;
+  --measurement-16: 16px;
+  --measurement-18: 18px;
+  --measurement-20: 20px;
+  --measurement-22: 22px;
+  --measurement-24: 24px;
+  --measurement-26: 26px;
+  --measurement-28: 28px;
+  --measurement-30: 30px;
+  --measurement-32: 32px;
+  --measurement-36: 36px;
+  --measurement-40: 40px;
+  --measurement-44: 44px;
+  --measurement-48: 48px;
+  --measurement-52: 52px;
+  --measurement-56: 56px;
+  --measurement-64: 64px;
+  --measurement-max: 999px;
+}

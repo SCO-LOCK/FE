@@ -7,7 +7,7 @@ tone_instructions: >-
 reviews:
   profile: chill
   high_level_summary: true
-  high_level_summary_in_walkthrough: true
+  changed_files_summary: true
   collapse_walkthrough: true
   poem: true
   suggested_labels: false

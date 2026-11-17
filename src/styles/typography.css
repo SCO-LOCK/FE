@@ -1,0 +1,110 @@
+/* Figma Text Styles: 2275:8099 */
+:root {
+  --typography-font-family: 'Google Sans', system-ui, sans-serif;
+  --typography-line-height-heading: 1.4;
+  --typography-line-height-body: 1.5;
+}
+
+@utility type-heading-primary {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-3xlarge);
+  font-weight: var(--typography-font-weight-semibold);
+  line-height: var(--typography-line-height-heading);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
+@utility type-heading-secondary {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-2xlarge);
+  font-weight: var(--typography-font-weight-semibold);
+  line-height: var(--typography-line-height-heading);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
+@utility type-heading-tertiary {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-xlarge);
+  font-weight: var(--typography-font-weight-semibold);
+  line-height: var(--typography-line-height-heading);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
+@utility type-input-medium {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-medium);
+  font-weight: var(--typography-font-weight-medium);
+  line-height: var(--typography-line-height-body);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
+@utility type-body-large {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-large);
+  font-weight: var(--typography-font-weight-medium);
+  line-height: var(--typography-line-height-body);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
+@utility type-body-medium-strong {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-medium);
+  font-weight: var(--typography-font-weight-semibold);
+  line-height: var(--typography-line-height-body);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
+@utility type-body-medium {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-medium);
+  font-weight: var(--typography-font-weight-medium);
+  line-height: var(--typography-line-height-body);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
+@utility type-body-small-strong {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-small);
+  font-weight: var(--typography-font-weight-semibold);
+  line-height: var(--typography-line-height-body);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
+@utility type-body-small {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-small);
+  font-weight: var(--typography-font-weight-medium);
+  line-height: var(--typography-line-height-body);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
+@utility type-body-xsmall {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-xsmall);
+  font-weight: var(--typography-font-weight-medium);
+  line-height: var(--typography-line-height-body);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
+@utility type-action-xlarge-strong {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-xlarge);
+  font-weight: var(--typography-font-weight-semibold);
+  line-height: var(--typography-line-height-heading);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
+@utility type-action-medium-strong {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-medium);
+  font-weight: var(--typography-font-weight-semibold);
+  line-height: var(--typography-line-height-heading);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
+@utility type-action-small-strong {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-small);
+  font-weight: var(--typography-font-weight-semibold);
+  line-height: var(--typography-line-height-heading);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
