@@ -65,7 +65,7 @@ function AnalysisResult({ analysisId, initialAnalysis, requestPath }: AnalysisRe
     analysis?.status === 'RUNNING' ||
     analysis?.status === 'PROCESSING';
   const completedAnalysis = analysis?.status === 'COMPLETED' ? analysis : null;
-  const items = completedAnalysis?.items.toSorted((first, second) => first.itemOrder - second.itemOrder);
+  const items = completedAnalysis?.items;
 
   function handleRetry() {
     setQueryError('');
