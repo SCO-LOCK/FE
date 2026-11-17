@@ -12,7 +12,6 @@ const STEPS = ['프로젝트 정보 입력', '요청 사항 입력', 'AI 분석 
 
 interface ResultLocationState {
   findings: Finding[];
-  requestText: string;
 }
 
 export default function ResultPage() {
@@ -24,7 +23,7 @@ export default function ResultPage() {
     return <Navigate to={PATHS.request} replace />;
   }
 
-  const { findings, requestText } = state;
+  const { findings } = state;
 
   return (
     <main className="page-grid mt-10 flex-1 pb-24">
@@ -87,7 +86,7 @@ export default function ResultPage() {
           <ActionButton
             size="large"
             leftIcon={<ArrowLineIcon direction="left" />}
-            onClick={() => navigate(PATHS.request, { state: { requestText } })}
+            onClick={() => navigate(PATHS.request)}
           >
             요청 사항 입력
           </ActionButton>

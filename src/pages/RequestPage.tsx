@@ -1,6 +1,6 @@
 import { analyzeRequest } from '../apis/analysis';
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import ArrowLineIcon from '../assets/icons/ArrowLineIcon';
 import ActionButton from '../components/common/ActionButton';
 import IconTextButton from '../components/common/IconTextButton';
@@ -12,16 +12,13 @@ import { PATHS } from '../routes/paths';
 const STEPS = ['프로젝트 정보 입력', '요청 사항 입력', 'AI 분석 결과'];
 const EMPTY_REQUEST_MESSAGE = '클라이언트 요청사항을 입력해주세요.';
 const ANALYSIS_ERROR_MESSAGE = '요청을 분석하지 못했어요.';
-
-interface RequestLocationState {
-  requestText?: string;
-}
+const REQUEST_TEXT_STORAGE_KEY = 'requestText';
 
 export default function RequestPage() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const state = location.state as RequestLocationState | null;
-  const [requestText, setRequestText] = useState(state?.requestText ?? '');
+  const [requestText, setRequestText] = useState(
+    () => sessionStorage.getItem(REQUEST_TEXT_STORAGE_KEY) ?? '',
+  );
   const [errorMessage, setErrorMessage] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [hasAnalysisError, setHasAnalysisError] = useState(false);
@@ -32,11 +29,12 @@ export default function RequestPage() {
       return;
     }
 
+    sessionStorage.setItem(REQUEST_TEXT_STORAGE_KEY, requestText);
     setHasAnalysisError(false);
     setIsAnalyzing(true);
     try {
       const findings = await analyzeRequest(requestText);
-      navigate(PATHS.result, { state: { findings, requestText } });
+      navigate(PATHS.result, { state: { findings } });
     } catch {
       setHasAnalysisError(true);
     } finally {
@@ -100,7 +98,8 @@ export default function RequestPage() {
             leftIcon={<ArrowLineIcon direction="left" />}
             onClick={() => {
               // TODO: 프로젝트 정보 입력 페이지 연결
-            }}>
+            }}
+          >
             프로젝트 정보 입력
           </ActionButton>
           <ActionButton
