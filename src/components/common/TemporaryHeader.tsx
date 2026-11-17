@@ -5,6 +5,7 @@ import scolockLogo from "../../assets/scolock-logo.svg";
 interface TemporaryHeaderProps {
   onProjectsClick?: () => void;
   onLogout?: () => void;
+  alignToPageGrid?: boolean;
 }
 
 const ACTION_CLASS_NAME =
@@ -13,11 +14,19 @@ const ACTION_CLASS_NAME =
 export default function TemporaryHeader({
   onProjectsClick,
   onLogout,
+  alignToPageGrid = false,
 }: TemporaryHeaderProps) {
+  const headerLayout = alignToPageGrid
+    ? "h-10 px-(--grid-margin) lg:h-15"
+    : "h-10 px-4 md:px-8 lg:px-12 min-[1425px]:px-24";
+  const actionsLayout = alignToPageGrid
+    ? "lg:min-w-43.5 lg:justify-between lg:gap-0"
+    : "min-[1425px]:min-w-[174px] min-[1425px]:justify-between min-[1425px]:gap-0 min-[1425px]:pl-3.5";
+
   return (
     <header
       lang="ko"
-      className="flex h-10 shrink-0 items-center justify-between bg-bg-neutral-default px-4 text-fg-neutral-primary md:px-8 lg:px-12 min-[1425px]:px-24"
+      className={`flex shrink-0 items-center justify-between bg-bg-neutral-default text-fg-neutral-primary ${headerLayout}`}
     >
       <a
         href={import.meta.env.BASE_URL}
@@ -27,7 +36,7 @@ export default function TemporaryHeader({
         <img src={scolockLogo} alt="" width={164} height={24} />
       </a>
 
-      <div className="flex shrink-0 items-center gap-1 min-[1425px]:min-w-[174px] min-[1425px]:justify-between min-[1425px]:gap-0 min-[1425px]:pl-3.5">
+      <div className={`flex shrink-0 items-center gap-1 ${actionsLayout}`}>
         <button
           type="button"
           className={`${ACTION_CLASS_NAME} type-action-medium-strong gap-1 text-fg-neutral-primary`}

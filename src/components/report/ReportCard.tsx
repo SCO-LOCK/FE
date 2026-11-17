@@ -13,11 +13,13 @@ export default function ReportCard({ title, footer, children, className = '', ..
       <div className="flex flex-col gap-[var(--gap-2xlarge)] rounded-[var(--radius-small)]
         bg-bg-neutral-weak p-[var(--padding-2xlarge)]">
 
-        <div className="flex items-center gap-[var(--gap-small)]">
+        <div className="flex items-start gap-[var(--gap-small)]">
           <span className="flex size-7 shrink-0 items-center justify-center">
-            <NoticeBadge aria-hidden="true" width={22} height={22} viewBox="1 1 22 22" />
+            <NoticeBadge aria-hidden="true" />
           </span>
-          <h3 className="flex-1 type-heading-tertiary text-fg-neutral-primary">{title}</h3>
+          <h3 className="min-w-0 flex-1 wrap-anywhere break-keep type-heading-tertiary text-fg-neutral-primary">
+            {title}
+          </h3>
         </div>
 
         <div className="flex flex-col gap-[var(--gap-medium)]">{children}</div>

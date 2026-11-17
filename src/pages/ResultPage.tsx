@@ -4,16 +4,14 @@ import { ApiError } from '../apis/apiClient';
 import { getAnalysis } from '../apis/requestAnalysis';
 import ArrowLineIcon from '../assets/icons/ArrowLineIcon';
 import ActionButton from '../components/common/ActionButton';
-import IconTextButton from '../components/common/IconTextButton';
 import Snackbar from '../components/common/Snackbar';
-import Stepper from '../components/common/Stepper/Stepper';
 import ReportCard from '../components/report/ReportCard';
 import ReportCardInteractive from '../components/report/ReportCardInteractive';
 import ReportCardItem from '../components/report/ReportCardItem';
+import AnalysisPageLayout from '../layout/AnalysisPageLayout';
 import { parseRouteId, PATHS } from '../routes/paths';
 import type { Analysis } from '../types/analysis';
 
-const STEPS = ['프로젝트 정보 입력', '요청 사항 입력', 'AI 분석 결과'];
 const QUERY_ERROR_MESSAGE = '분석 결과를 불러오지 못했어요. 연결을 확인한 뒤 다시 시도해주세요.';
 const ANALYSIS_FAILED_MESSAGE = 'AI가 요청 사항을 분석하지 못했어요.';
 
@@ -85,120 +83,105 @@ function AnalysisResult({ analysisId, initialAnalysis, requestPath }: AnalysisRe
   }
 
   return (
-    <main className="page-grid mt-10 flex-1 pb-24">
-      <aside className="col-span-full min-[1024px]:col-span-3 min-[1024px]:pt-[88px]">
-        <Stepper steps={STEPS} currentStep={3} />
-      </aside>
-
-      <div className="col-span-full flex flex-col gap-11 min-[1024px]:col-span-9">
-        <IconTextButton
-          size="large"
-          icon={<ArrowLineIcon direction="left" />}
-          label="프로젝트명"
-          onClick={() => navigate(-1)}
-          className="self-start"
-        />
-
-        <div className="flex flex-col gap-13">
-          <div className="flex flex-col gap-[var(--gap-small)]">
-            <h1 className="type-heading-primary text-fg-neutral-primary">AI 분석 결과</h1>
-            <p className="type-body-medium text-fg-neutral-secondary">
-              AI가 클라이언트의 요청 사항을 분석해 제작 전 확인해야 할 내용을 정리했어요.
-            </p>
+    <>
+      <AnalysisPageLayout
+        currentStep={3}
+        title="AI 분석 결과"
+        description="AI가 클라이언트의 요청 사항을 분석해 제작 전 확인해야 할 내용을 정리했어요."
+        actions={
+          <>
+            <ActionButton
+              size="large"
+              leftIcon={<ArrowLineIcon direction="left" />}
+              onClick={() => navigate(requestPath)}
+            >
+              요청 사항 입력
+            </ActionButton>
+            <ActionButton
+              size="large"
+              variant="brandInverse"
+              rightIcon={<ArrowLineIcon />}
+              onClick={() => navigate(PATHS.home)}
+            >
+              홈
+            </ActionButton>
+          </>
+        }
+      >
+        {queryError && (
+          <div className="flex flex-col items-start gap-(--gap-medium)">
+            <p role="alert" className="type-body-medium text-fg-accent-negative">{queryError}</p>
+            <ActionButton onClick={handleRetry}>다시 시도</ActionButton>
           </div>
+        )}
 
-          {queryError && (
-            <div className="flex flex-col items-start gap-[var(--gap-medium)]">
-              <p role="alert" className="type-body-medium text-fg-accent-negative">{queryError}</p>
-              <ActionButton onClick={handleRetry}>다시 시도</ActionButton>
-            </div>
-          )}
+        {!queryError && !analysis && (
+          <p role="status" className="type-body-medium text-fg-neutral-secondary">
+            분석 결과를 불러오고 있어요.
+          </p>
+        )}
 
-          {!queryError && !analysis && (
+        {!queryError && isWaitingForAnalysis && (
+          <div className="flex flex-col items-start gap-(--gap-medium)">
             <p role="status" className="type-body-medium text-fg-neutral-secondary">
-              분석 결과를 불러오고 있어요.
+              아직 분석 중이에요.
             </p>
-          )}
+            <ActionButton onClick={handleRetry}>다시 조회</ActionButton>
+          </div>
+        )}
 
-          {!queryError && isWaitingForAnalysis && (
-            <div className="flex flex-col items-start gap-[var(--gap-medium)]">
-              <p role="status" className="type-body-medium text-fg-neutral-secondary">
-                아직 분석 중이에요.
+        {analysis?.status === 'FAILED' && (
+          <p role="alert" className="type-body-medium text-fg-accent-negative">
+            {analysis.message || ANALYSIS_FAILED_MESSAGE}
+          </p>
+        )}
+
+        {completedAnalysis && items && (
+          <section className="flex flex-col gap-(--gap-large)">
+            <h2 className="flex gap-(--gap-small) type-heading-secondary text-fg-neutral-primary">
+              제작 전에 확인해야 할 사항
+              <span className="text-fg-accent-notice">
+                {completedAnalysis.reviewCount ?? items.length}
+              </span>
+            </h2>
+
+            {items.length === 0 ? (
+              <p className="flex h-36 items-center justify-center text-center type-body-medium text-fg-neutral-tertiary">
+                추가로 확인할 중요한 내용을 찾지 못했어요.
               </p>
-              <ActionButton onClick={handleRetry}>다시 조회</ActionButton>
-            </div>
-          )}
+            ) : (
+              <div className="flex flex-col gap-(--gap-xlarge)">
+                {items.map((item) => {
+                  const suggestedQuestion = item.suggestedQuestion;
 
-          {analysis?.status === 'FAILED' && (
-            <p role="alert" className="type-body-medium text-fg-accent-negative">
-              {analysis.message || ANALYSIS_FAILED_MESSAGE}
-            </p>
-          )}
-
-          {completedAnalysis && items && (
-            <section className="flex flex-col gap-[var(--gap-large)]">
-              <h2 className="flex gap-[var(--gap-small)] type-heading-secondary text-fg-neutral-primary">
-                제작 전에 확인해야 할 사항
-                <span className="text-fg-accent-notice">
-                  {completedAnalysis.reviewCount ?? items.length}
-                </span>
-              </h2>
-
-              {items.length === 0 ? (
-                <p className="flex h-36 items-center justify-center type-body-medium text-fg-neutral-tertiary">
-                  추가로 확인할 중요한 내용을 찾지 못했어요.
-                </p>
-              ) : (
-                <div className="flex flex-col gap-[var(--gap-xlarge)]">
-                  {items.map((item) => {
-                    const suggestedQuestion = item.suggestedQuestion;
-
-                    return (
-                      <ReportCard
-                        key={item.id}
-                        title={item.title || item.requestExcerpt}
-                        footer={suggestedQuestion && (
-                          <ReportCardInteractive
-                            title="질문 예시"
-                            content={suggestedQuestion}
-                            onClick={() => void handleCopy(suggestedQuestion)}
-                          />
-                        )}
-                      >
-                        {item.criteriaEvidence && (
-                          <ReportCardItem title="기존 제작 기준" content={item.criteriaEvidence} />
-                        )}
-                        <ReportCardItem
-                          title="새 요청사항"
-                          content={item.requestExcerpt}
-                          message={item.reason}
+                  return (
+                    <ReportCard
+                      key={item.id}
+                      title={item.title || item.requestExcerpt}
+                      footer={suggestedQuestion && (
+                        <ReportCardInteractive
+                          title="질문 예시"
+                          content={suggestedQuestion}
+                          onClick={() => void handleCopy(suggestedQuestion)}
                         />
-                      </ReportCard>
-                    );
-                  })}
-                </div>
-              )}
-            </section>
-          )}
-        </div>
-        <div className="mt-auto flex justify-between">
-          <ActionButton
-            size="large"
-            leftIcon={<ArrowLineIcon direction="left" />}
-            onClick={() => navigate(requestPath)}
-          >
-            요청 사항 입력
-          </ActionButton>
-          <ActionButton
-            size="large"
-            variant="brandInverse"
-            rightIcon={<ArrowLineIcon />}
-            onClick={() => navigate(PATHS.home)}
-          >
-            홈
-          </ActionButton>
-        </div>
-      </div>
+                      )}
+                    >
+                      {item.criteriaEvidence && (
+                        <ReportCardItem title="기존 제작 기준" content={item.criteriaEvidence} />
+                      )}
+                      <ReportCardItem
+                        title="새 요청사항"
+                        content={item.requestExcerpt}
+                        message={item.reason}
+                      />
+                    </ReportCard>
+                  );
+                })}
+              </div>
+            )}
+          </section>
+        )}
+      </AnalysisPageLayout>
       {copyFeedback && (
         <Snackbar
           variant={copyFeedback.variant}
@@ -209,10 +192,10 @@ function AnalysisResult({ analysisId, initialAnalysis, requestPath }: AnalysisRe
           }
           onRetry={() => void handleCopy(copyFeedback.content)}
           onClose={() => setCopyFeedback(null)}
-          className="fixed top-[92px] right-4 z-10 md:right-10"
+          className="fixed top-16 right-(--grid-margin) z-10 lg:top-23 lg:right-10"
         />
       )}
-    </main>
+    </>
   );
 }
 
