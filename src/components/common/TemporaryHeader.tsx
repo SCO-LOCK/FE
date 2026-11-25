@@ -17,7 +17,7 @@ export default function TemporaryHeader({
   alignToPageGrid = false,
 }: TemporaryHeaderProps) {
   const headerLayout = alignToPageGrid
-    ? "h-10 px-(--grid-margin) lg:h-15"
+    ? "h-10 px-(--grid-page-margin) lg:h-15"
     : "h-10 px-4 md:px-8 lg:px-12 min-[1425px]:px-24";
   const actionsLayout = alignToPageGrid
     ? "lg:min-w-43.5 lg:justify-between lg:gap-0"
