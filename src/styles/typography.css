@@ -1,4 +1,4 @@
-/* Figma Text Styles: 2275:8099 */
+/* Figma Text Styles: 2242:3166 */
 :root {
   --typography-font-family: 'Google Sans', system-ui, sans-serif;
   --typography-line-height-heading: 1.4;
@@ -37,6 +37,14 @@
   letter-spacing: var(--typography-letter-spacing-default);
 }
 
+@utility type-input-medium-soft {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-medium);
+  font-weight: var(--typography-font-weight-regular);
+  line-height: var(--typography-line-height-body);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
 @utility type-body-large {
   font-family: var(--typography-font-family);
   font-size: var(--typography-font-size-large);
@@ -57,6 +65,14 @@
   font-family: var(--typography-font-family);
   font-size: var(--typography-font-size-medium);
   font-weight: var(--typography-font-weight-medium);
+  line-height: var(--typography-line-height-body);
+  letter-spacing: var(--typography-letter-spacing-default);
+}
+
+@utility type-body-medium-soft {
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-font-size-medium);
+  font-weight: var(--typography-font-weight-regular);
   line-height: var(--typography-line-height-body);
   letter-spacing: var(--typography-letter-spacing-default);
 }
