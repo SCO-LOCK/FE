@@ -1,6 +1,6 @@
 /* Figma Text Styles: 2242:3166 */
 :root {
-  --typography-font-family: 'Google Sans', system-ui, sans-serif;
+  --typography-font-family: 'Google Sans', 'Noto Sans KR', system-ui, sans-serif;
   --typography-line-height-heading: 1.4;
   --typography-line-height-body: 1.5;
 }
