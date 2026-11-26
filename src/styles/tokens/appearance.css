@@ -24,11 +24,16 @@
   --radius-full: var(--measurement-max);
   --border-weight-default: 2px;
   --border-weight-thin: 1.5px;
-  --grid-width: 390px;
-  --grid-columns: 3;
-  --grid-margin: 16px;
-  --grid-gutter: 8px;
+  --grid-page-width: 390px;
+  --grid-page-columns: 3;
+  --grid-page-margin: 16px;
+  --grid-page-gutter: 8px;
+  --grid-page-margin-modal: 32px;
+  --grid-modal-margin: 16px;
+  --grid-modal-max-width: 9999px;
+  --grid-modal-min-width: 0px;
   --typography-letter-spacing-default: -0.1px;
+  --typography-font-weight-regular: 400;
   --typography-font-weight-medium: 500;
   --typography-font-weight-semibold: 600;
   --typography-font-size-xsmall: var(--measurement-10);
@@ -43,10 +48,12 @@
 @media (min-width: 768px) {
   :root {
     --layout-mode: tablet;
-    --grid-width: 780px;
-    --grid-columns: 6;
-    --grid-margin: 32px;
-    --grid-gutter: 16px;
+    --grid-page-width: 780px;
+    --grid-page-columns: 6;
+    --grid-page-margin: 32px;
+    --grid-page-gutter: 16px;
+    --grid-page-margin-modal: 52px;
+    --grid-modal-margin: 32px;
     --typography-font-size-xsmall: var(--measurement-12);
     --typography-font-size-small: var(--measurement-14);
     --typography-font-size-medium: var(--measurement-16);
@@ -60,10 +67,14 @@
 @media (min-width: 1024px) {
   :root {
     --layout-mode: desktop compact;
-    --grid-width: 1024px;
-    --grid-columns: 12;
-    --grid-margin: 48px;
-    --grid-gutter: 20px;
+    --grid-page-width: 1024px;
+    --grid-page-columns: 12;
+    --grid-page-margin: 48px;
+    --grid-page-gutter: 20px;
+    --grid-page-margin-modal: 180px;
+    --grid-modal-margin: 52px;
+    --grid-modal-max-width: 996px;
+    --grid-modal-min-width: 704px;
     --typography-font-size-3xlarge: var(--measurement-40);
   }
 }
@@ -71,8 +82,9 @@
 @media (min-width: 1440px) {
   :root {
     --layout-mode: desktop;
-    --grid-width: 1440px;
-    --grid-margin: 96px;
-    --grid-gutter: 24px;
+    --grid-page-width: 1440px;
+    --grid-page-margin: 96px;
+    --grid-page-gutter: 24px;
+    --grid-page-margin-modal: 200px;
   }
 }

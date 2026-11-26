@@ -192,7 +192,7 @@ function AnalysisResult({ analysisId, initialAnalysis, requestPath }: AnalysisRe
           }
           onRetry={() => void handleCopy(copyFeedback.content)}
           onClose={() => setCopyFeedback(null)}
-          className="fixed top-16 right-(--grid-margin) z-10 lg:top-23 lg:right-10"
+          className="fixed top-16 right-(--grid-page-margin) z-10 lg:top-23 lg:right-10"
         />
       )}
     </>
